@@ -1,6 +1,4 @@
 export const onAddItem = (previewItems, newItem) => {
-  //check if new item exist in the saved list
-  //if item  is not in the save list then add it
   const itemExist = previewItems.find((item) => item.id === newItem.id);
 
   if (!itemExist) {
