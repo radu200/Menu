@@ -15,22 +15,13 @@ export const onRemoveItem = (previewItems, itemId) => {
 };
 
 export const getTotalDietaries = (previewItems) => {
-  const dietaries = [];
-  previewItems.forEach((item) => {
-    item.dietaries.forEach((dietary) => {
-      dietaries.push(dietary);
-    });
-  });
-
+  
   const result = {};
 
-  dietaries.forEach((element) => {
-    if (result[element]) {
-      result[element] += 1;
-    } else {
-      result[element] = 1;
-    }
+  previewItems.forEach((item) => {
+    item.dietaries.forEach((dietary) => {
+       result[dietary] = (result[dietary] || 0) + 1;
+    });
   });
-
   return result;
 };
