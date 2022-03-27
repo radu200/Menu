@@ -98,6 +98,22 @@ button.remove-item {
   cursor: pointer;
 }
 
+button.remove-dietary{
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  -webkit-appearance: none;
+  border: 2px solid #000;
+  background: #FFF;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  line-height: 0px;
+  border-radius: 100%;
+  padding: 0;
+  cursor: pointer;
+}
+
 button.remove-item:focus {
   outline: none;
 }

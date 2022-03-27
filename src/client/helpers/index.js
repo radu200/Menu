@@ -1,3 +1,19 @@
+import { map } from "lodash";
+
+export const debounce = (func, delay) => {
+  let id;
+   console.log("id", id)
+  return (...args) => {
+    console.log('prev id', id)
+    if(id) clearTimeout(id)
+     
+    id = setTimeout(() => {
+       func(...args)
+    }, delay)
+  }
+}
+
+
 export const onAddItem = (previewItems, newItem) => {
   const itemExist = previewItems.find((item) => item.id === newItem.id);
 
@@ -16,12 +32,11 @@ export const onRemoveItem = (previewItems, itemId) => {
 
 export const getTotalDietaries = (previewItems) => {
   
-  const result = {};
-
-  previewItems.forEach((item) => {
-    item.dietaries.forEach((dietary) => {
-       result[dietary] = (result[dietary] || 0) + 1;
-    });
-  });
-  return result;
+  return previewItems
+             .map(item => item.dietaries)
+             .reduce((map, curr) => [...map, ...curr],[])
+             .reduce((map, curr) => {
+                 return {...map, [curr]: (map[curr] || 0) + 1};
+              }, {});            
+    
 };
